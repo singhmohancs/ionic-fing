@@ -1,0 +1,23 @@
+{
+  "name": "fing-kit",
+  "version": "2.0.0",
+  "cordova": {
+    "id": "fing-kit",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "description": "Fing Kit Ionic/Cordova Plugin",
+  "keywords": [
+    "ionic",
+    "cordova",
+    "fing",
+    "network",
+    "scanner",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Fing",
+  "license": "Commercial"
+}

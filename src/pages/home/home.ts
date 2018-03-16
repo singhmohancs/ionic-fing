@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+declare const window: any;
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  constructor() {
+  }
 
-  constructor(public navCtrl: NavController) {
-
+  scanNetwork(): void {
+    if (window.fing) {
+      window.fing.networkScan({}, (result) => {
+        console.log('received results:');
+        console.log(result);
+        var jsonResult = JSON.stringify(result);
+        alert(jsonResult);
+      }, (error) => {
+        console.log(error);
+        alert(error);
+      });
+    }
   }
 
 }

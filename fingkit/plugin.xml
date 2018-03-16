@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Refer to
+https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html
+-->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="fing-kit" version="2.0.0">
+
+    <name>FingKit Plugin</name>
+    <description>Fing Kit Ionic/Cordova Plugin</description>
+    <author>Fing</author>
+    <license>Commercial</license>
+    <keywords>fing, network, scanner</keywords>
+
+    <!-- FingKit has a single JavaScript interface for both iOS and Android versions -->
+    <js-module src="www/fing.js" name="fing">
+
+        <!-- The entry point the module attached to. -->
+        <clobbers target="fing" />
+    </js-module>
+
+    <!-- Maps the JS Interface into iOS platform -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/widget">
+            <feature name="FingScanner">
+                <param name="ios-package" value="FingScannerCDVPlugin"/>
+            </feature>
+        </config-file>
+
+        <framework src="src/ios/FingKit.framework" custom="true" embed="true" />
+        <framework src="libresolv.9.tbd" />
+        <framework src="libsqlite3.tbd" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Foundation.framework" />
+        <framework src="Security.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreTelephony.framework" />
+        <header-file src="src/ios/FingScannerCDVPlugin.h" />
+        <source-file src="src/ios/FingScannerCDVPlugin.m" />
+    </platform>
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/widget">
+            <feature name="FingScanner">
+                <param name="android-package" value="com.fing.fingkit.FingScannerCDVPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-feature android:name="android.hardware.wifi" android:required="true" />
+        </config-file>
+
+        <framework src="com.android.support:appcompat-v7:25.4.0" />
+        <framework src="com.google.android.gms:play-services-analytics:11.8.0" />
+        <framework src="com.google.protobuf:protobuf-java:2.6.1" />
+        <framework src="org.snmp4j:snmp4j:2.5.0" />
+
+        <source-file src="src/android/FingScannerCDVPlugin.java" target-dir="src/com/fing/fingkit/" />
+        <framework src="src/android/FingScannerCDVPlugin.gradle" custom="true" type="gradleReference" />
+        <resource-file src="aar/fing-kit.aar" target="libs/fing-kit.aar" />
+
+    </platform>
+</plugin>

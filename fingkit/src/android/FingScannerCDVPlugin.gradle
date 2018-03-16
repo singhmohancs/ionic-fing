@@ -1,0 +1,22 @@
+repositories {
+    jcenter()
+    flatDir{
+        dirs 'libs'
+    }
+}
+dependencies {
+    compile(name:'fing-kit', ext:'aar') {
+        transitive=true
+    }
+
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.google.android.gms:play-services-analytics:11.8.0'
+    compile 'com.google.protobuf:protobuf-java:2.6.1'
+    compile 'org.snmp4j:snmp4j:2.5.0'
+}
+android {
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}

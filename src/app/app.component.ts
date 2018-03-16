@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
+declare const window: any;
+
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +19,34 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      // Fing Configurations
+      if (window.fing) {
+        window.fing.validateLicenseKey("FING_API_KEY", "",
+          (result) => {
+            console.log('Licence OK: ' + result);
+          }, (error) => {
+            console.log(error);
+          });
+
+        platform.pause.subscribe(() => {
+          window.fing.willSuspend((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
+        });
+
+        platform.resume.subscribe(() => {
+          window.fing.willResume((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
+        });
+      }
+
+
     });
   }
 }
