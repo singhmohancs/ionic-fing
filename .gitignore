@@ -22,14 +22,16 @@ dist/
 node_modules/
 tmp/
 temp/
+$RECYCLE.BIN/
 hooks/
 platforms/
 plugins/
 plugins/android.json
 plugins/ios.json
-www/
-$RECYCLE.BIN/
+
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+www
+!fingkit/www
