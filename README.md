@@ -32,6 +32,17 @@ ionic cordova platform add android
 ```bash
 ionic cordova plugin add ./fingkit
 ```
+## Config Fing
+- Go to src/app/app.component.ts
+- replace FING_API_KEY with fing API Key
+```bash
+window.fing.validateLicenseKey("FING_API_KEY", "",
+          (result) => {
+            console.log('Licence OK: ' + result);
+          }, (error) => {
+            console.log(error);
+          });
+```          
 
 ## Launch & build application
 - Launch in browser
