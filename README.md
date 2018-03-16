@@ -17,7 +17,7 @@ npm install -g cordova ionic
 
 - Navigate to your project
 ```bash
-cd /ionicFing
+cd /ionic-fing
 ```
 - Install NPM Dependencies
 ```bash
